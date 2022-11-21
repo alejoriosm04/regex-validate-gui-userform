@@ -1,8 +1,6 @@
-from form_checker import *
 from tkinter import *
 from tkinter import messagebox
 import ast
-import pymongo
 from src import form_checker
 
 
@@ -80,10 +78,10 @@ def on_enter(e):
 def on_leave(e):
     if user.get() == '':
         user.insert(0, 'Username')
-    elif form_checker.usernameChecker(str(user.get())) == True:
+    elif form_checker.usernameChecker(str(user.get())):
         label = Label(frame, text='Valid username!', font=('Segoe UI', 9), bg='white', fg='green')
         label.place(x=25, y=87)
-    elif form_checker.usernameChecker(str(user.get())) == False:
+    elif not form_checker.usernameChecker(str(user.get())):
         label = Label(frame, text='Usernames must contain 8 characters at least (max: 15)', font=('Segoe UI', 9), bg='white', fg='red')
         label.place(x=25, y=87)
 
@@ -108,10 +106,10 @@ def on_enter(e):
 def on_leave(e):
     if name.get() == '':
         name.insert(0, 'Name')
-    elif form_checker.nameChecker(str(name.get())) == True:
+    elif form_checker.nameChecker(str(name.get())):
         label = Label(frame, text='Valid name!', font=('Segoe UI', 9), bg='white', fg='green')
         label.place(x=25, y=142)
-    elif form_checker.nameChecker(str(name.get())) == False:
+    elif not form_checker.nameChecker(str(name.get())):
         label = Label(frame, text='Invalid name, please enter a correct name', font=('Segoe UI', 9), bg='white', fg='red')
         label.place(x=25, y=142)
 
@@ -138,10 +136,10 @@ def on_leave(e):
     if email.get() == '':
         email.insert(0, 'Email')
     validation, message = form_checker.checkEmail(str(email.get()))
-    if validation == True:
+    if validation:
         label = Label(frame, text=message, font=('Segoe UI', 9), bg='white', fg='green')
         label.place(x=25, y=197)
-    elif validation == False:
+    elif not validation:
         label = Label(frame, text=message, font=('Segoe UI', 9), bg='white', fg='red')
         label.place(x=25, y=197)
 
@@ -167,10 +165,10 @@ def on_leave(e):
     if date_birth.get() == '':
         date_birth.insert(0, 'Date of Birth')
     validation, message = form_checker.birthDateChecker(str(date_birth.get()))
-    if validation == True:
+    if validation:
         label = Label(frame, text=message, font=('Segoe UI', 9), bg='white', fg='green')
         label.place(x=25, y=253)
-    elif validation == False:
+    elif not validation:
         label = Label(frame, text=message, font=('Segoe UI', 9), bg='white', fg='red')
         label.place(x=25, y=253)
 
@@ -197,10 +195,10 @@ def on_leave(e):
     if card_number.get() == '':
         card_number.insert(0, 'Card Number')
     validation, message = form_checker.cardChecker(str(card_number.get()))
-    if validation == True:
+    if validation:
         label = Label(frame, text=message, font=('Segoe UI', 9), bg='white', fg='green')
         label.place(x=25, y=307)
-    elif validation == False:
+    elif not validation:
         label = Label(frame, text=message, font=('Segoe UI', 9), bg='white', fg='red')
         label.place(x=25, y=307)
 
@@ -227,10 +225,10 @@ def on_leave(e):
     if cvv.get() == '':
         cvv.insert(0, 'CVV')
     validation, message = form_checker.checkCVV(str(cvv.get()))
-    if validation == True:
+    if validation:
         label = Label(frame, text=message, font=('Segoe UI', 9), bg='white', fg='green')
         label.place(x=25, y=362)
-    elif validation == False:
+    elif not validation:
         label = Label(frame, text=message, font=('Segoe UI', 9), bg='white', fg='red')
         label.place(x=25, y=362)
 
@@ -257,10 +255,10 @@ def on_leave(e):
     if exp_date.get() == '':
         exp_date.insert(0, 'EXP Date')
     validation, message = form_checker.validExpDate(str(exp_date.get()))
-    if validation == True:
+    if validation:
         label = Label(frame, text=message, font=('Segoe UI', 9), bg='white', fg='green')
         label.place(x=182, y=362)
-    elif validation == False:
+    elif not validation:
         label = Label(frame, text=message, font=('Segoe UI', 9), bg='white', fg='red')
         label.place(x=182, y=362)
 
@@ -286,10 +284,10 @@ def on_leave(e):
     if password_user.get() == '':
         password_user.insert(0, 'Password')
     validation, message = form_checker.passwordChecker(str(password_user.get()))
-    if validation == True:
+    if validation:
         label = Label(frame, text=message, font=('Segoe UI', 9), bg='white', fg='green')
         label.place(x=25, y=417)
-    elif validation == False:
+    elif not validation:
         label = Label(frame, text=message, font=('Segoe UI', 9), bg='white', fg='red')
         label.place(x=25, y=417)
 
@@ -334,7 +332,7 @@ confirm_code.bind("<FocusOut>", on_leave)
 Frame(frame, width=295, height=2, bg='black').place(x=25, y=467)
 
 # Sign Up Button and Sign In Button
-Button(frame, width=39, pady=7, text='Sign Up', bg='#57a1f8', fg='white', cursor='hand2', border=0, command=signup).place(x=35, y=500)
+Button(frame, width=39, pady=7, text='Sign Up', bg='#57a1f8', fg='white', cursor='hand2', border=0, command=signin_command).place(x=35, y=500)
 label = Label(frame, text='Already have an account?', font=('Segoe UI', 9), bg='white', fg='black')
 label.place(x=70, y=550)
 

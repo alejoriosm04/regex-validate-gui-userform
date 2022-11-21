@@ -116,18 +116,18 @@ def tillYourBirthday(day, month, year):
 
     if (
     numberOfDays) > 0:  # if the difference is negative, your birthday has already passed, so we need to do the count of next years num of day
-        print(f"There are {numberOfDays} days left until your birthday")
+        return f"There are {numberOfDays} days left until your birthday"
     else:
         todaysYear = int(today.year)
         birthdate_day_year = date(todaysYear + 1, month, day).timetuple().tm_yday
         if calendar.isleap(todaysYear):  # if its leap it has 366 days
             tillYearIsOver = 366 - todays_day_year  # num of days till year is over
             days = birthdate_day_year + tillYearIsOver
-            print(f"There are {days} days left until your birthday")
+            return f"There are {days} days left until your birthday"
         else:
             tillYearIsOver = 365 - todays_day_year  # normal year
             days = birthdate_day_year + tillYearIsOver
-            print(f"There are {days} days left until your birthday")
+            return f"There are {days} days left until your birthday"
 
 
 def containsCapitals(password):
