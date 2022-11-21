@@ -1,7 +1,13 @@
+from form_checker import *
 from tkinter import *
 from tkinter import messagebox
 import ast
 import pymongo
+
+from src import form_checker
+
+# from main import *
+
 
 window = Tk()
 window.title('Sign Up')
@@ -59,12 +65,21 @@ heading.place(x=100, y=2)
 
 # Username Entry
 def on_enter(e):
+    label = Label(frame, text='-----------------------------------------------------------------', font=('Segoe UI', 9), bg='white', fg='white')
+    label.place(x=25, y=87)
     user.delete(0, 'end')
+
 
 
 def on_leave(e):
     if user.get() == '':
         user.insert(0, 'Username')
+    elif form_checker.usernameChecker(str(user.get())) == True:
+        label = Label(frame, text='Valid username!', font=('Segoe UI', 9), bg='white', fg='green')
+        label.place(x=25, y=87)
+    elif form_checker.usernameChecker(str(user.get())) == False:
+        label = Label(frame, text='Usernames must contain 8 characters at least (max: 15)', font=('Segoe UI', 9), bg='white', fg='red')
+        label.place(x=25, y=87)
 
 
 user = Entry(frame, width=25, border=0, font=('Segoe UI', 11), bg='white', fg='black')
@@ -78,12 +93,21 @@ Frame(frame, width=295, height=2, bg='black').place(x=25, y=82)
 
 # Name Entry
 def on_enter(e):
+    label = Label(frame, text='---------------------------------------------------------', font=('Segoe UI', 9),
+                  bg='white', fg='white')
+    label.place(x=25, y=142)
     name.delete(0, 'end')
 
 
 def on_leave(e):
     if name.get() == '':
         name.insert(0, 'Name')
+    elif form_checker.nameChecker(str(name.get())) == True:
+        label = Label(frame, text='Valid name!', font=('Segoe UI', 9), bg='white', fg='green')
+        label.place(x=25, y=142)
+    elif form_checker.nameChecker(str(name.get())) == False:
+        label = Label(frame, text='Invalid name, please enter a correct name', font=('Segoe UI', 9), bg='white', fg='red')
+        label.place(x=25, y=142)
 
 
 name = Entry(frame, width=25, border=0, font=('Segoe UI', 11), bg='white', fg='black')
@@ -116,12 +140,22 @@ Frame(frame, width=295, height=2, bg='black').place(x=25, y=192)
 
 # Date of Birth Entry
 def on_enter(e):
+    label = Label(frame, text='---------------------------------------------------------', font=('Segoe UI', 9),
+                  bg='white', fg='white')
+    label.place(x=25, y=253)
     date_birth.delete(0, 'end')
 
 
 def on_leave(e):
     if date_birth.get() == '':
         date_birth.insert(0, 'Date of Birth')
+    validation, message = form_checker.birthDateChecker(str(date_birth.get()))
+    if validation == True:
+        label = Label(frame, text=message, font=('Segoe UI', 9), bg='white', fg='green')
+        label.place(x=25, y=253)
+    elif validation == False:
+        label = Label(frame, text=message, font=('Segoe UI', 9), bg='white', fg='red')
+        label.place(x=25, y=253)
 
 
 date_birth = Entry(frame, width=25, border=0, font=('Segoe UI', 11), bg='white', fg='black')
@@ -192,12 +226,22 @@ Frame(frame, width=137, height=2, bg='black').place(x=182, y=357)
 
 # Password Entry
 def on_enter(e):
+    label = Label(frame, text='---------------------------------------------------------', font=('Segoe UI', 9),
+                  bg='white', fg='white')
+    label.place(x=25, y=417)
     password_user.delete(0, 'end')
 
 
 def on_leave(e):
     if password_user.get() == '':
         password_user.insert(0, 'Password')
+    validation, message = form_checker.passwordChecker(str(password_user.get()))
+    if validation == True:
+        label = Label(frame, text=message, font=('Segoe UI', 9), bg='white', fg='green')
+        label.place(x=25, y=417)
+    elif validation == False:
+        label = Label(frame, text=message, font=('Segoe UI', 9), bg='white', fg='red')
+        label.place(x=25, y=417)
 
 
 password_user = Entry(frame, width=25, border=0, font=('Segoe UI', 11), bg='white', fg='black')
@@ -211,12 +255,24 @@ Frame(frame, width=295, height=2, bg='black').place(x=25, y=412)
 
 # Confirm Password Entry
 def on_enter(e):
+    label = Label(frame, text='---------------------------------------------------------', font=('Segoe UI', 9),
+                  bg='white', fg='white')
+    label.place(x=25, y=472)
     confirm_code.delete(0, 'end')
 
 
 def on_leave(e):
     if confirm_code.get() == '':
         confirm_code.insert(0, 'Confirm Password')
+    password = password_user.get()
+    confirm_password = confirm_code.get()
+
+    if password == confirm_password:
+        label = Label(frame, text='Password Matched', font=('Segoe UI', 9), bg='white', fg='green')
+        label.place(x=25, y=472)
+    elif password != confirm_password:
+        label = Label(frame, text='Password Not Matched', font=('Segoe UI', 9), bg='white', fg='red')
+        label.place(x=25, y=472)
 
 
 confirm_code = Entry(frame, width=25, border=0, font=('Segoe UI', 11), bg='white', fg='black')
