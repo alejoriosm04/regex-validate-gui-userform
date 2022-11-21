@@ -3,10 +3,7 @@ from tkinter import *
 from tkinter import messagebox
 import ast
 import pymongo
-
 from src import form_checker
-
-# from main import *
 
 
 window = Tk()
@@ -18,16 +15,22 @@ window.resizable(False, False)
 
 def signup():
     username = user.get()
+    name_user = name.get()
+    email_user = email.get()
+    date_birth_user = date_birth.get()
+    card_number_user = card_number.get()
+    cvv_user = cvv.get()
+    exp_date_user = exp_date.get()
     password = password_user.get()
     confirm_password = confirm_code.get()
 
-    if password == confirm_password:
+    if password == confirm_password and (form_checker.usernameChecker(str(user.get()))) and (form_checker.nameChecker(str(name.get()))) and (form_checker.checkEmail(str(email.get()))[0]) and (form_checker.birthDateChecker(str(date_birth.get()))[0]) and (form_checker.cardChecker(str(card_number.get()))[0]) and (form_checker.checkCVV(str(cvv.get()))[0]) and (form_checker.validExpDate(str(exp_date.get()))[0]):
         try:
             file = open('database.txt', 'r+')
             d = file.read()
             r = ast.literal_eval(d)
 
-            dict2 = {username: password}
+            dict2 = {username: (name_user, email_user, date_birth_user, card_number_user, cvv_user, exp_date_user, password)}
             r.update(dict2)
             file.truncate(0)
             file.close()
@@ -38,11 +41,14 @@ def signup():
             messagebox.showinfo('Sign Up', 'Sign Up Successful')
         except:
             file = open('database.txt', 'w')
-            pp = str({username: password})
+            pp = str({username: (name_user, email_user, date_birth_user, card_number_user, cvv_user, exp_date_user, password)})
             file.write(pp)
             file.close()
     else:
         messagebox.showerror('Error', 'Password and Confirm Password must be same')
+
+    window.destroy()
+    import signin
 
 
 def signin_command():
@@ -65,7 +71,7 @@ heading.place(x=100, y=2)
 
 # Username Entry
 def on_enter(e):
-    label = Label(frame, text='-----------------------------------------------------------------', font=('Segoe UI', 9), bg='white', fg='white')
+    label = Label(frame, text='---------------------------------------------------------------------', font=('Segoe UI', 9), bg='white', fg='white')
     label.place(x=25, y=87)
     user.delete(0, 'end')
 
@@ -121,15 +127,26 @@ Frame(frame, width=295, height=2, bg='black').place(x=25, y=137)
 
 # Email Entry
 def on_enter(e):
+    label = Label(frame, text='-------------------------------------------------------------------',
+                  font=('Segoe UI', 9),
+                  bg='white', fg='white')
+    label.place(x=25, y=197)
     email.delete(0, 'end')
 
 
 def on_leave(e):
     if email.get() == '':
         email.insert(0, 'Email')
+    validation, message = form_checker.checkEmail(str(email.get()))
+    if validation == True:
+        label = Label(frame, text=message, font=('Segoe UI', 9), bg='white', fg='green')
+        label.place(x=25, y=197)
+    elif validation == False:
+        label = Label(frame, text=message, font=('Segoe UI', 9), bg='white', fg='red')
+        label.place(x=25, y=197)
 
 
-email = Entry(frame, width=25, border=0, font=('Segoe UI', 11), bg='white', fg='black')
+email = Entry(frame, width=30, border=0, font=('Segoe UI', 11), bg='white', fg='black')
 email.place(x=30, y=165)
 email.insert(0, 'Email')
 email.bind("<FocusIn>", on_enter)
@@ -140,7 +157,7 @@ Frame(frame, width=295, height=2, bg='black').place(x=25, y=192)
 
 # Date of Birth Entry
 def on_enter(e):
-    label = Label(frame, text='---------------------------------------------------------', font=('Segoe UI', 9),
+    label = Label(frame, text='-------------------------------------------------------------------', font=('Segoe UI', 9),
                   bg='white', fg='white')
     label.place(x=25, y=253)
     date_birth.delete(0, 'end')
@@ -167,14 +184,25 @@ date_birth.bind("<FocusOut>", on_leave)
 Frame(frame, width=295, height=2, bg='black').place(x=25, y=247)
 
 
-# Card Number -  Credit Card Entry
+# Card Number - Credit Card Entry
 def on_enter(e):
+    label = Label(frame, text='-------------------------------------------------------------------',
+                  font=('Segoe UI', 9),
+                  bg='white', fg='white')
+    label.place(x=25, y=307)
     card_number.delete(0, 'end')
 
 
 def on_leave(e):
     if card_number.get() == '':
         card_number.insert(0, 'Card Number')
+    validation, message = form_checker.cardChecker(str(card_number.get()))
+    if validation == True:
+        label = Label(frame, text=message, font=('Segoe UI', 9), bg='white', fg='green')
+        label.place(x=25, y=307)
+    elif validation == False:
+        label = Label(frame, text=message, font=('Segoe UI', 9), bg='white', fg='red')
+        label.place(x=25, y=307)
 
 
 card_number = Entry(frame, width=25, border=0, font=('Segoe UI', 11), bg='white', fg='black')
@@ -186,14 +214,25 @@ card_number.bind("<FocusOut>", on_leave)
 Frame(frame, width=295, height=2, bg='black').place(x=25, y=302)
 
 
-# Security Code -  Credit Card Entry
+# Security Code - Credit Card Entry
 def on_enter(e):
+    label = Label(frame, text='------------------------',
+                  font=('Segoe UI', 9),
+                  bg='white', fg='white')
+    label.place(x=25, y=362)
     cvv.delete(0, 'end')
 
 
 def on_leave(e):
     if cvv.get() == '':
         cvv.insert(0, 'CVV')
+    validation, message = form_checker.checkCVV(str(cvv.get()))
+    if validation == True:
+        label = Label(frame, text=message, font=('Segoe UI', 9), bg='white', fg='green')
+        label.place(x=25, y=362)
+    elif validation == False:
+        label = Label(frame, text=message, font=('Segoe UI', 9), bg='white', fg='red')
+        label.place(x=25, y=362)
 
 
 cvv = Entry(frame, width=25, border=0, font=('Segoe UI', 11), bg='white', fg='black')
@@ -205,14 +244,25 @@ cvv.bind("<FocusOut>", on_leave)
 Frame(frame, width=137, height=2, bg='black').place(x=25, y=357)
 
 
-# Exp Date -  Credit Card Entry
+# Exp Date - Credit Card Entry
 def on_enter(e):
+    label = Label(frame, text='---------------------------------',
+                  font=('Segoe UI', 9),
+                  bg='white', fg='white')
+    label.place(x=182, y=362)
     exp_date.delete(0, 'end')
 
 
 def on_leave(e):
     if exp_date.get() == '':
         exp_date.insert(0, 'EXP Date')
+    validation, message = form_checker.validExpDate(str(exp_date.get()))
+    if validation == True:
+        label = Label(frame, text=message, font=('Segoe UI', 9), bg='white', fg='green')
+        label.place(x=182, y=362)
+    elif validation == False:
+        label = Label(frame, text=message, font=('Segoe UI', 9), bg='white', fg='red')
+        label.place(x=182, y=362)
 
 
 exp_date = Entry(frame, width=25, border=0, font=('Segoe UI', 11), bg='white', fg='black')
@@ -284,7 +334,7 @@ confirm_code.bind("<FocusOut>", on_leave)
 Frame(frame, width=295, height=2, bg='black').place(x=25, y=467)
 
 # Sign Up Button and Sign In Button
-Button(frame, width=39, pady=7, text='Sign Up', bg='#57a1f8', fg='white', border=0, command=signup).place(x=35, y=500)
+Button(frame, width=39, pady=7, text='Sign Up', bg='#57a1f8', fg='white', cursor='hand2', border=0, command=signup).place(x=35, y=500)
 label = Label(frame, text='Already have an account?', font=('Segoe UI', 9), bg='white', fg='black')
 label.place(x=70, y=550)
 

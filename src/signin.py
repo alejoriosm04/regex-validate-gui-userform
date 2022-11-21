@@ -1,11 +1,13 @@
 from tkinter import *
 import ast
+from src import user_info
 
 root = Tk()
 root.title('Sign In')
 root.geometry('925x600+300+200')
 root.configure(bg='#fff')
 root.resizable(False, False)
+
 
 def signin():
     username = user.get()
@@ -16,9 +18,9 @@ def signin():
     r = ast.literal_eval(d)
     file.close()
 
-    if username in r.keys() and password == r[username]:
+    if username in r.keys() and password == r[username][6]:
         root.destroy()
-        import user_info
+        user_info.data(username, password)
 
     else:
         label = Label(frame, text='Wrong Username!', font=('Segoe UI', 9), bg='white', fg='red')
