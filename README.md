@@ -24,7 +24,25 @@ In other words, learn how to use the Python Regex Library (`re`) and one of the 
 
 **Note:** Please read the [Input Instructions](#input-instructions).
 
-In the following documentation, we specified, some questions proposed by the prof for the presentation of this and how to use correctly the program. 
+In the following documentation, we specified, some questions proposed by the prof for the presentation of this and how to use correctly the program.
+
+### Questions
+
+**1. What was the chosen programming language and why?**
+
+    ...
+
+**2. What is your general opinion of the chosen programming language?**
+
+    ...
+
+**3. What is your appreciation of the way of input and output of data in this programming language?**
+
+    ...
+
+**4. How is the handling of data types and data structures in this programming language?**
+
+    ...
 
 ### Input Instructions
 
@@ -71,7 +89,7 @@ We designed the project to be able to run either on a GUI or your terminal.
 1. Clone the project on your machine.
 
     ```bash
-    git@github.com:alejoriosm04/regex-validate-gui-userform.git
+    git clone git@github.com:alejoriosm04/regex-validate-gui-userform.git
     ```
 2. Go to the project directory (or wherever you stored it).
 
