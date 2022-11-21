@@ -34,7 +34,7 @@ def signup_command():
     import signup
 
 
-img = PhotoImage(file='signin.png')
+img = PhotoImage(file='./imgs/signin.png')
 Label(root, image=img, bg='white').place(x=50, y=120)
 
 frame = Frame(root, width=350, height=350, bg='#fff')

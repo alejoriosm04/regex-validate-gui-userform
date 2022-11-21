@@ -23,7 +23,7 @@ def data(username, password):
     exp_date = r[username][5]
 
 
-    img = PhotoImage(file='user_info.png')
+    img = PhotoImage(file='./imgs/user_info.png')
     Label(window, image=img, bg='white').place(x=50, y=120)
 
     frame = Frame(window, width=400, height=600, bg='#fff')

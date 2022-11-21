@@ -28,21 +28,26 @@ In the following documentation, we specified, some questions proposed by the pro
 
 ### Questions
 
+<details><summary>Project Questions</summary>
+
 **1. What was the chosen programming language and why?**
 
-    ...
+    Here goes the answer
 
 **2. What is your general opinion of the chosen programming language?**
 
-    ...
+    Here goes the answer
 
 **3. What is your appreciation of the way of input and output of data in this programming language?**
 
-    ...
+    Here goes the answer
 
 **4. How is the handling of data types and data structures in this programming language?**
 
-    ...
+    Here goes the answer
+
+</details>
+
 
 ### Input Instructions
 

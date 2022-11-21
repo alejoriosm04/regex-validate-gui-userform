@@ -56,7 +56,7 @@ def signin_command():
 
 
 # Image of Sign Up
-img = PhotoImage(file='signup.png')
+img = PhotoImage(file='./imgs/signup.png')
 Label(window, image=img, border=0, bg='white').place(x=50, y=120)
 
 # Main Label with the input frames
