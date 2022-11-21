@@ -28,18 +28,20 @@ In the following documentation, we specified, some questions proposed by the pro
 
 ### Input Instructions
 
+We used the Python Regex Library (`re`) to analyze the expressions according to certain patterns, created from Regular Expressions theory.
+
 - `username`: Must have a minimum length of 8 characters and a maximum of 16 characters.
 - `name`: Must contain only letters in upper or lower case.
 - `email`: Must contain characters as letters or numbers, followed of an `@` and finally a correct subdomain.
 
-    > hello@gmail.com
+        hello@gmail.com
 
 - `Date of Birth`: You can enter your birth date in the following formats:
                   
-                  - 10/10/2015 (dd/mm/yyyy)
-                  - 10-10-2015 (dd-mm-yyyy)
-                  - 10 NOV 2010 (dd [English Abbreviation for Month] yyyy)
-                  - 10 NOVIEMBRE 2010 (dd [Spanish Month] yyyy)
+        - 10/10/2015 (dd/mm/yyyy)
+        - 10-10-2015 (dd-mm-yyyy)
+        - 10 NOV 2010 (dd [English Abbreviation for Month] yyyy)
+        - 10 NOVIEMBRE 2010 (dd [Spanish Month] yyyy)
                   
     **You must be 18 years or older in order to create an account**
 
