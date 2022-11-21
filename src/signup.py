@@ -37,6 +37,7 @@ def signup():
             w = file.write(str(r))
 
             messagebox.showinfo('Sign Up', 'Sign Up Successful')
+            file.close()
         except:
             file = open('database.txt', 'w')
             pp = str({username: (name_user, email_user, date_birth_user, card_number_user, cvv_user, exp_date_user, password)})
@@ -332,7 +333,7 @@ confirm_code.bind("<FocusOut>", on_leave)
 Frame(frame, width=295, height=2, bg='black').place(x=25, y=467)
 
 # Sign Up Button and Sign In Button
-Button(frame, width=39, pady=7, text='Sign Up', bg='#57a1f8', fg='white', cursor='hand2', border=0, command=signin_command).place(x=35, y=500)
+Button(frame, width=39, pady=7, text='Sign Up', bg='#57a1f8', fg='white', cursor='hand2', border=0, command=signup).place(x=35, y=500)
 label = Label(frame, text='Already have an account?', font=('Segoe UI', 9), bg='white', fg='black')
 label.place(x=70, y=550)
 

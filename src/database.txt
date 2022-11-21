@@ -1,1 +1,1 @@
-{'alejoriosm04': ('Alejandro Rios Muñoz', 'ariosm@gmail.com', '10/10/2004', '5570735810881011', '987', '12/24', 'Alejo123#')}
+{'alejoriosm04': ('Alejandro Rios Muñoz', 'ariosm@gmail.com', '10/10/2004', '5570735810881011', '987', '12/24', 'Alejo123#'), 'linasofi13': ('Lina Sofia Ballesteros', 'linasofi13@gmail.com', '13/03/2004', '371576372960229', '963', '12/24', 'Lina123#'), 'johndoe123': ('John Doe', 'johndoe@gmail.com', '10/12/2000', '371576372960229', '741', '12/24', 'githubUser123*')}
