@@ -93,17 +93,6 @@ def birthDateChecker(date_user):
         return False, "Invalid date, please enter your birthdate in the valid formats"
 
 
-def ageCalculator(date_user):
-    day, month, year = getDayMonthYear(date_user)
-
-    if (32 > day > 0) and (13 > month > 0) and (2023 > year > 1900):
-        today = date.today()
-        result = today.year - year - ((today.month, today.day) < (month, day))
-        return result
-    else:
-        return -1
-
-
 def tillYourBirthday(day, month, year):
     today = date.today()
     birthdate_day_year = date(today.year, month, day).timetuple().tm_yday
@@ -279,44 +268,11 @@ def validExpDate(expDate):
     else:
         return False, "The expiration date is invalid"
 
-
-def checkDate(expDate):
-    if re.search(pattern_date, expDate):
-        month, yy = expDate.split('/')
-    elif re.search(pattern_date2, expDate):
-        month, yy = expDate.split('-')
-
-    if month[0] == '0':
-        month = month[1]
-
-    today = date.today()
-    curr_year = int(today.year)
-    year_exp = "20"
-    year_exp += yy
-    year_exp = int(year_exp)
-    month = int(month)
-    today_month = int(today.month)
-
-    if (13 > month > 0) and (year_exp > curr_year):
-        return True
-    if (13 > month > 0) and (year_exp == curr_year) and (month > today_month):
-        return True
-    else:
-        return False
-
 def checkCVV(cvv):
     if len(cvv) == 3 and cvv.isdigit():
         return True, "Valid CVV"
     else:
         return False, "Invalid CVV"
-
-def checkNumber(number):
-    pattern_num = "(\d\d\d\d\d\d\d\d\d\d)"  # with hyphens ?
-    if re.search(pattern_num, number):
-        return True
-    else:
-        return False
-
 
 def checkEmail(email):
     email_pattern = "[a-zA-Z0-9]+@[a-zA-Z]+\.(com|edu|net)"
