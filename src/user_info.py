@@ -39,7 +39,7 @@ def data(username, password):
     email = Label(frame, text=f'Email: {email}', font=('Segoe UI', 10, 'bold'), bg='white', fg='black')
     email.place(x=30, y=130)
 
-    dob = Label(frame, text=f'Your Happy Bithday is in {date_of_birth}', font=('Segoe UI', 12, 'bold'), bg='white', fg='#88b000')
+    dob = Label(frame, text=f'Your Happy Birthday is in {date_of_birth}', font=('Segoe UI', 12, 'bold'), bg='white', fg='#88b000')
     dob.place(x=30, y=200)
 
     days_left = Label(frame, text=days_left, font=('Segoe UI', 12, 'bold'), bg='white', fg='#88b000')
