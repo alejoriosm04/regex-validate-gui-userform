@@ -15,10 +15,10 @@ small_alph = "abcdefghijklmnopqrstuvwxyz"
 special_chars_list = ['$', '@', '_', '*', '!', '¡', '-', '#']
 numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 
-months = {"JAN": 1, "FEB": 2, "MAR": 3, "MAY": 4, "APR": 5, "JUN": 6, "JUL": 7, "AUG": 8, "SEPT": 9, "OCT": 10,
-          "NOV": 11, "DEC": 12}
-spanish_months = {"ENERO": 1, "FEBRERO": 2, "MARZO": 3, "MAYO": 4, "ABRIL": 5, "JUNIO": 6, "JULIO": 7, "AGOSTO": 8,
-                  "SEPTIEMBRE": 9, "OCTUBRE": 10, "NOVIEMBRE": 11, "DICIEMBRE": 12}
+months = {"JAN": '01', "FEB": '01', "MAR": '03', "MAY": '04', "APR": '05', "JUN": '06', "JUL": '07', "AUG": '08', "SEPT": '09', "OCT": '10',
+          "NOV": '11', "DEC": '12'}
+spanish_months = {"ENERO": '01', "FEBRERO": '02', "MARZO": '03', "MAYO": '04', "ABRIL": '05', "JUNIO": '06', "JULIO": '07', "AGOSTO": '08',
+                  "SEPTIEMBRE": '09', "OCTUBRE": '10', "NOVIEMBRE": '11', "DICIEMBRE": '12'}
 
 
 class bcolors:
