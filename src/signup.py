@@ -77,14 +77,14 @@ def on_enter(e):
 
 
 def on_leave(e):
-    if user.get() == '':
-        user.insert(0, 'Username')
-    elif form_checker.usernameChecker(str(user.get())):
+    if form_checker.usernameChecker(str(user.get())):
         label = Label(frame, text='Valid username!', font=('Segoe UI', 9), bg='white', fg='green')
         label.place(x=25, y=87)
-    elif not form_checker.usernameChecker(str(user.get())):
+    if not form_checker.usernameChecker(str(user.get())):
         label = Label(frame, text='Usernames must contain 8 characters at least (max: 15)', font=('Segoe UI', 9), bg='white', fg='red')
         label.place(x=25, y=87)
+    if user.get() == '':
+        user.insert(0, 'Username')
 
 
 user = Entry(frame, width=25, border=0, font=('Segoe UI', 11), bg='white', fg='black')
@@ -105,14 +105,14 @@ def on_enter(e):
 
 
 def on_leave(e):
-    if name.get() == '':
-        name.insert(0, 'Name')
-    elif form_checker.nameChecker(str(name.get())):
+    if form_checker.nameChecker(str(name.get())):
         label = Label(frame, text='Valid name!', font=('Segoe UI', 9), bg='white', fg='green')
         label.place(x=25, y=142)
-    elif not form_checker.nameChecker(str(name.get())):
+    if not form_checker.nameChecker(str(name.get())):
         label = Label(frame, text='Invalid name, please enter a correct name', font=('Segoe UI', 9), bg='white', fg='red')
         label.place(x=25, y=142)
+    if name.get() == '':
+       name.insert(0, 'Name')
 
 
 name = Entry(frame, width=25, border=0, font=('Segoe UI', 11), bg='white', fg='black')
