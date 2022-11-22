@@ -186,7 +186,7 @@ If you have problems running the `GUI` program with Tkinter, you will be able to
 1. Go to the project directory (or wherever you stored it).
 
     ```bash
-    cd regex-validate-gui-userform/testing/
+    cd regex-validate-gui-userform/cli/
     ```
 2. Run the program.
 
